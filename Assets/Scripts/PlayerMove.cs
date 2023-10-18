@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -30,23 +31,33 @@ public class PlayerMove : MonoBehaviour
         Jump();
         Move();
         Ani();
+        Slam();
+    }
+
+    void Slam()
+    {
+        if (isJumping && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            animator.SetTrigger("GroundSlam");
+
+        }
     }
 
     void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontal, vertical, 0f) * movePower * Time.deltaTime;
+
+        Vector3 movement = new Vector3(horizontal, 0f, 0f) * movePower * Time.deltaTime;
 
         transform.Translate(movement);
     }
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && (isJumping || jumpCount < maxJumpCount))
+        if (Input.GetButtonDown("Jump") && (jumpCount < maxJumpCount))
         {
-
+            animator.SetBool("IsGround", false);
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             isJumping = true;
             jumpCount++;
@@ -59,11 +70,18 @@ public class PlayerMove : MonoBehaviour
             if (jumpCount == 2)
             {
                 animator.SetBool("Jump1", false);
-                isJumping = false;
+                //isJumping = false;
 
                 animator.SetBool("Jump2", true);
-
             }
+            //if(jumpCount == 2 && Input.GetKeyDown(KeyCode.LeftShift))
+            //{
+            //    animator.SetBool("GroundSlam", true);
+            //}
+            //else
+            //{
+            //    animator.SetBool("GroundSlam", false);
+            //}
         }
 
         // 점프 중인 동안에만 점프 애니메이션 실행
@@ -111,6 +129,7 @@ public class PlayerMove : MonoBehaviour
             jumpCount = 0; // 접지에 닿으면 점프 횟수 초기화
             animator.SetBool("Jump1", false);
             animator.SetBool("Jump2", false);
+            animator.SetBool("IsGround", true);
         }
     }
 }
