@@ -519,9 +519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbeff9686b14fb40a72d3d2842493b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowBox: {fileID: 328575364}
-  highBox: {fileID: 1671596965}
-  tieBox: {fileID: 807208789}
+  leftAnvil: {fileID: 328575364}
+  middleAnvil: {fileID: 1671596965}
+  rightAnvil: {fileID: 807208789}
   Keyboard: {fileID: 1819825467}
   stopPositionY: -1.8
 --- !u!114 &328575371
@@ -1131,9 +1131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbeff9686b14fb40a72d3d2842493b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowBox: {fileID: 328575364}
-  highBox: {fileID: 1671596965}
-  tieBox: {fileID: 807208789}
+  leftAnvil: {fileID: 328575364}
+  middleAnvil: {fileID: 1671596965}
+  rightAnvil: {fileID: 807208789}
   Keyboard: {fileID: 1655357933}
   stopPositionY: -1.8
 --- !u!114 &807208796
@@ -2324,9 +2324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbeff9686b14fb40a72d3d2842493b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowBox: {fileID: 328575364}
-  highBox: {fileID: 1671596965}
-  tieBox: {fileID: 807208789}
+  leftAnvil: {fileID: 328575364}
+  middleAnvil: {fileID: 1671596965}
+  rightAnvil: {fileID: 807208789}
   Keyboard: {fileID: 1083727817}
   stopPositionY: -1.8
 --- !u!114 &1671596972

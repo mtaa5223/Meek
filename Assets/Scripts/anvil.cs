@@ -6,9 +6,9 @@ public class anvil : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject lowBox;
-    public GameObject highBox;
-    public GameObject tieBox;
+    public GameObject leftAnvil;
+    public GameObject middleAnvil;
+    public GameObject rightAnvil;
     
 
     public GameObject Keyboard;
@@ -19,27 +19,27 @@ public class anvil : MonoBehaviour
     {
 
         Keyboard.SetActive(false);
-        lowBox.transform.position = new Vector3(0f, 10f, 0f);
-        highBox.transform.position = new Vector3(-3f, 10f, 0f);
-        tieBox.transform.position = new Vector3(3f, 10f, 0f);
+        leftAnvil.transform.position = new Vector3(0f, 10f, 0f);
+        middleAnvil.transform.position = new Vector3(-3f, 10f, 0f);
+        rightAnvil.transform.position = new Vector3(3f, 10f, 0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        lowBox1();
-        highBox1();
-        tieBox1();
+        LeftAnvil();
+        MiddleAnvil();
+        RightAnvil();
 
     }
-    void lowBox1()
+    void LeftAnvil()
     {
         
         if (!stop)
         {
-            Vector3 currentPosition = lowBox.transform.position;
+            Vector3 currentPosition = leftAnvil.transform.position;
             currentPosition.y -= speed * Time.deltaTime;
-            lowBox.transform.position = currentPosition;
+            leftAnvil.transform.position = currentPosition;
             if (currentPosition.y < stopPositionY)
             {
                 stop = true;
@@ -47,28 +47,28 @@ public class anvil : MonoBehaviour
            
         }
     }
-    void highBox1()
+    void MiddleAnvil()
     {
        
         if (!stop)
         {
-            Vector3 currentPosition = highBox.transform.position;
+            Vector3 currentPosition = middleAnvil.transform.position;
             currentPosition.y -= speed * Time.deltaTime;
-            highBox.transform.position = currentPosition;
+            middleAnvil.transform.position = currentPosition;
             if (currentPosition.y < stopPositionY)
             {
                 stop = true;
             }
         }
     }
-    void tieBox1()
+    void RightAnvil()
     {
       
         if (!stop)
         {
-            Vector3 currentPosition = tieBox.transform.position;
+            Vector3 currentPosition = rightAnvil.transform.position;
             currentPosition.y -= speed * Time.deltaTime;
-            tieBox.transform.position = currentPosition;
+            rightAnvil.transform.position = currentPosition;
             if (currentPosition.y < stopPositionY)
             {
                 stop = true;

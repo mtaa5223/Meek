@@ -7,6 +7,7 @@ public class PlayerStat : MonoBehaviour
     public int hp = 0;
     public int attack = 0;
     public int sheild = 0;
+    public int gold =100;
     void Start()
     {
         
