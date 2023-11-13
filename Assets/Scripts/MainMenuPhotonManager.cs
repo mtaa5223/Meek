@@ -44,7 +44,7 @@ public class MainMenuPhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.SendRate = 60;
         ConnectToPhoton();
         createRoom.interactable = false;
-        
+
         pv = GetComponent<PhotonView>();
     }
 
@@ -99,28 +99,27 @@ public class MainMenuPhotonManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         jemok.text = PhotonNetwork.CurrentRoom.Name;
-        pv.RPC("Name", RpcTarget.All); // 닉네임을 함께 전달
-        pv.RPC("playerInstinate", RpcTarget.All);
-    }
-
-    [PunRPC]
-    public void Name()
-    {
-        pv.RPC("Nametext", RpcTarget.All);
-    }
-    [PunRPC]
-    public void Nametext()
-    {
-        if(PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        if (pv.IsMine)
         {
             playerName.text = PlayerNameInputField.text;
         }
-        if(PhotonNetwork.CurrentRoom.PlayerCount == 2)
-        {
-            playerName2.text = PlayerNameInputField.text;
-        }
+        pv.RPC("playerInstinate", RpcTarget.All);
     }
-
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        pv.RPC("HostName", newPlayer, playerName.text);
+    }
+    [PunRPC]
+    public void HostName(string name)
+    {
+        playerName.text = name;
+        pv.RPC("NameSetting", RpcTarget.All, PlayerNameInputField.text);
+    }
+    [PunRPC]
+    public void NameSetting(string name)
+    {
+        playerName2.text = name;
+    }
     [PunRPC]
     public void playerInstinate()
     {
@@ -137,11 +136,11 @@ public class MainMenuPhotonManager : MonoBehaviourPunCallbacks
     }
     private void FixedUpdate()
     {
-       
+
     }
     [PunRPC]
     public void ReadyButton()
-    {   
+    {
         pv.RPC("ButtonClick", RpcTarget.All);
 
     }
@@ -154,7 +153,7 @@ public class MainMenuPhotonManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void ButtonClick()
     {
-        
+
         ReadyText.text = "ready";
         Ready1 = true;
     }
@@ -171,18 +170,19 @@ public class MainMenuPhotonManager : MonoBehaviourPunCallbacks
             GameStart.interactable = true;
         }
     }
-        public void EveryoneReady()
+    public void EveryoneReady()
     {
-            Debug.Log("11");
-            if(GameStart.interactable == true)
-            {
-                GameStartButton = true;
-            }
-            if(GameStartButton == true) {
-                pv.RPC("Sceneload", RpcTarget.All);
-            }
+        Debug.Log("11");
+        if (GameStart.interactable == true)
+        {
+            GameStartButton = true;
         }
-    
+        if (GameStartButton == true)
+        {
+            pv.RPC("Sceneload", RpcTarget.All);
+        }
+    }
+
     [PunRPC]
     public void Sceneload()
     {

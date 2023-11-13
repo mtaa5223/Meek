@@ -8,14 +8,11 @@ public class PlayerHp : MonoBehaviour
     public float maxHealth; //* 최대 체력
     public Image Hpbar;
 
-    void Start()
-    {
+    [SerializeField]
+    private Slider _slider;
 
-    }
-
-    // Update is called once per frame
-    void Update()
+    public void SetValue(float value)
     {
-        Hpbar.fillAmount = curHealth / maxHealth;
+        _slider.value = value;
     }
 }
