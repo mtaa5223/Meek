@@ -12,6 +12,7 @@ public class percentage : MonoBehaviour
     private float currentFadeTime = 0.0f;
     private Color initialColor;
     public GameObject Keypad;
+    public Text bigStatText;
 
     void Start()
     {
@@ -80,6 +81,7 @@ public class percentage : MonoBehaviour
                         stat.GetComponent<PlayerStat>().attack = 10;
                         Debug.Log("10++");
                         statText.text = "10++";
+                        bigStatText.text = "경험치 : 10++";
 
 
                         break;
@@ -88,24 +90,28 @@ public class percentage : MonoBehaviour
                         stat.GetComponent<PlayerStat>().attack = 20;
                         Debug.Log("20++");
                         statText.text = "20++";
+                        bigStatText.text = "경험치 : 20++";
                         break;
                     case 2:
                         stat.GetComponent<PlayerStat>().hp = 30;
                         stat.GetComponent<PlayerStat>().attack = 30;
                         Debug.Log("30++");
                         statText.text = "30++";
+                        bigStatText.text = "경험치 : 30++";
                         break;
                     case 3:
                         stat.GetComponent<PlayerStat>().hp = 40;
                         stat.GetComponent<PlayerStat>().attack = 40;
                         Debug.Log("40++");
                         statText.text = "40++";
+                        bigStatText.text = "경험치 : 40++";
                         break;
                     case 4:
                         stat.GetComponent<PlayerStat>().hp = 50;
                         stat.GetComponent<PlayerStat>().attack = 50;
                         Debug.Log("50++");
                         statText.text = "50++";
+                        bigStatText.text = "경험치 : 50++";
                         break;
                 }
                 // 텍스트 페이드 아웃를 시작하기 위해 초기화

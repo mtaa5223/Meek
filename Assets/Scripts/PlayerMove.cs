@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static PlayerMove instance = null;
+    
+
     SpriteRenderer rend;
 
-    public float movePower = 10;
+    public float movePower = 0;
     public float jumpPower = 1;
 
     Rigidbody2D rb;
@@ -20,6 +23,10 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(null == instance)
+        {
+            instance = this;
+        }
         rend = GetComponent<SpriteRenderer>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -39,7 +46,7 @@ public class PlayerMove : MonoBehaviour
         if (isJumping && Input.GetKeyDown(KeyCode.LeftShift))
         {
             animator.SetTrigger("GroundSlam");
-
+            movePower = 0;
         }
     }
 
