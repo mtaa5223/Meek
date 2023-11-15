@@ -82,8 +82,6 @@ public class percentage : MonoBehaviour
                         Debug.Log("10++");
                         statText.text = "10++";
                         bigStatText.text = "°æÇèÄ¡ : 10++";
-
-
                         break;
                     case 1:
                         stat.GetComponent<PlayerStat>().hp = 20;

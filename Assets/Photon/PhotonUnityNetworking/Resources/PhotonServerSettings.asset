@@ -49,6 +49,7 @@ MonoBehaviour:
   - ReadyButton2
   - HostName
   - NameSetting
+  - NameSleep
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

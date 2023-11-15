@@ -118,7 +118,16 @@ public class MainMenuPhotonManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void NameSetting(string name)
     {
+        pv.RPC("NameSleep", RpcTarget.All);
+    }
+    [PunRPC]
+    public void NameSleep()
+    {
         playerName2.text = name;
+        PlayerPrefs.SetString("playerName2.text", playerName2.text);
+        PlayerPrefs.SetString("playerName.text", playerName.text);
+        Debug.Log(playerName.text);
+        Debug.Log(playerName2.text);
     }
     [PunRPC]
     public void playerInstinate()

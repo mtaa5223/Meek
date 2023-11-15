@@ -8,6 +8,10 @@ TagManager:
   - DestruirDecoraCion
   - Bloque
   - Wall
+  - LowAnvil
+  - TieAnvil
+  - HighAnvil
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,8 +7,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public static PlayerMove instance = null;
-    
 
+    PhotonView pv;
     SpriteRenderer rend;
 
     public float movePower = 0;
@@ -23,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pv = GetComponent<PhotonView>();
         if(null == instance)
         {
             instance = this;
@@ -35,10 +37,14 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Jump();
-        Move();
-        Ani();
-        Slam();
+        if (pv.IsMine)
+        {
+            Jump();
+            Move();
+            Ani();
+            Slam();
+        }
+      
     }
 
     void Slam()

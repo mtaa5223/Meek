@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
         if (time > 3)
         {
-            text.text = "Àá½ÃÈÄ °ÔÀÓÀÌ ½ÃÀÛµË´Ï´Ù";
+            text.text = "ìž ì‹œí›„ ê²Œìž„ì´ ì‹œìž‘ë©ë‹ˆë‹¤";
             PlayerMove.instance.movePower = 4;
 
         }
